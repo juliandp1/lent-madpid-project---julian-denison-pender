@@ -1,5 +1,8 @@
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tilePath2, function (sprite, location) {
-    game.over(true, effects.dissolve)
+    game.over(true, effects.confetti)
+})
+info.onCountdownEnd(function () {
+    game.over(false, effects.splatter)
 })
 let mySprite = sprites.create(img`
     ........................
@@ -170,3 +173,4 @@ tiles.setTilemap(tiles.createTilemap(hex`100010000101010102020202020202020202020
     `, [myTiles.transparency16,sprites.builtin.forestTiles0,sprites.castle.tilePath5,sprites.castle.tilePath8,sprites.castle.tilePath2], TileScale.Sixteen))
 tiles.placeOnRandomTile(mySprite, sprites.castle.tilePath8)
 scene.cameraFollowSprite(mySprite)
+info.startCountdown(15)
