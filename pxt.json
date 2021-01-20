@@ -2,7 +2,8 @@
     "name": "lent MADPID Project - Julian Denison-Pender",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "color-coded-tilemap": "*"
     },
     "files": [
         "main.blocks",
