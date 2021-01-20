@@ -4,6 +4,18 @@
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true
     },
+    "level": {
+        "id": "level",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAxMDAwMTAwMDAxMDEwMTAxMDIwMjAyMDIwMjAyMDIwMjAyMDIwMjAyMDEwMjAyMDIwMjAyMDEwMTAyMDIwMjAyMDIwMjAyMDIwMjAyMDIwMjAyMDIwMTAyMDIwMTAxMDEwMTAxMDEwMjAxMDIwMjAxMDEwMjAxMDIwMjAxMDIwMjAyMDIwMTAyMDEwMjAyMDIwMjAxMDEwMjAxMDEwMTAyMDEwMTAxMDIwMTAyMDIwMjAyMDEwMTAyMDIwMjAxMDIwMTAxMDIwMjAxMDEwMTAxMDEwMTAxMDIwNDAyMDEwMjAxMDEwMjAyMDEwMjAxMDEwMTAxMDEwMjAyMDIwMTAyMDEwMTAyMDIwMTAyMDIwMjAxMDEwMTAxMDEwMTAxMDIwMTAxMDIwMjAxMDIwMjAyMDIwMjAxMDIwMjAyMDIwMjAyMDEwMjAyMDEwMjAxMDEwMTAxMDIwMjAyMDIwMjAyMDIwMTAyMDIwMTAyMDEwMTAxMDEwMTAxMDIwMjAxMDEwMTAxMDIwMjAxMDIwMTAxMDEwMTAyMDIwMjAyMDEwMjAyMDIwMjAxMDEwMjAyMDIwMjAyMDIwMjAyMDIwMTAyMDIwMjAyMDEwMTAyMDIwMjAyMDIwMjAyMDEwMjAyMDIwMjAxMDEwMTAxMDMwMTAxMDEwMTAxMDEwMTAyMDIwMjAxMDEwMTAxMjIyMjAwMDAwMDAwMDAwMDAyMDAwMDIyMDAwMDAwMDAwMDAwMDAwMjIwMjIyMjAyMDIyMDAyMDIyMDAwMDAwMjAyMDAyMDAyMjIwMjIyMDIwMjAwMjAwMjAwMDIyMjAwMjIyMjIyMDIwMDAyMjIwMDAyMjIyMjAyMDAwMjIyMDAwMjAwMjIyMjIyMDIyMjAwMDIwMDAwMDIwMDAwMjAwMDAyMjIyMjAwMDAwMDIwMDAwMjIyMjIyMjAwMjIyMjAwMDIyMjIyMDAwMDAyMDAyMDAyMDAwMDAwMDAwMjAwMjAwMjAwMDAwMDAyMDAyMDIyMDIyMjIyMjIwMjAwMjIyMg==",
+        "tileset": [
+            "myTiles.transparency16",
+            "sprites.builtin.forestTiles0",
+            "sprites.castle.tilePath5",
+            "sprites.castle.tilePath8",
+            "sprites.castle.tilePath2"
+        ]
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
