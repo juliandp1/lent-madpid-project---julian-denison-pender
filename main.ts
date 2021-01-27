@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const enemyprojectile = SpriteKind.create()
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile2 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
@@ -22,24 +25,6 @@ scene.onHitTile(SpriteKind.Player, 7, function (sprite) {
     current_level += 1
     next_level()
     mySprite2.follow(mySprite, 80)
-    projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 4 4 4 4 . . . . . . 
-        . . . . 4 4 4 5 5 4 4 4 . . . . 
-        . . . 3 3 3 3 4 4 4 4 4 4 . . . 
-        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
-        . . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
-        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
-        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
-        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
-        . . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
-        . . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
-        . . . 4 2 2 2 2 2 2 2 2 4 . . . 
-        . . . . 4 4 2 2 2 2 4 4 . . . . 
-        . . . . . . 4 4 4 4 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, mySprite2, 50, 50)
 })
 function next_level () {
     scene.setTileMap(level[current_level])
@@ -66,13 +51,18 @@ function next_level () {
         scene.placeOnRandomTile(mySprite2, 15)
     }
 }
+sprites.onOverlap(SpriteKind.enemyprojectile, SpriteKind.Player, function (sprite, otherSprite) {
+    mySprite.destroy(effects.fire, 1000)
+    game.over(false)
+})
 scene.onHitTile(SpriteKind.Player, 15, function (sprite) {
     game.over(true, effects.confetti)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    mySprite2.destroy(effects.ashes, 500)
+    mySprite2.destroy(effects.ashes, 1000)
 })
 let projectile: Sprite = null
+let projectile3: Sprite = null
 let mySprite2: Sprite = null
 let projectile2: Sprite = null
 let current_level = 0
@@ -238,5 +228,40 @@ info.startCountdown(45)
 current_level = 0
 next_level()
 game.onUpdateInterval(500, function () {
-	
+    projectile3 = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, mySprite, 50, 50)
+    projectile = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 4 4 4 4 . . . . . . 
+        . . . . 4 4 4 5 5 4 4 4 . . . . 
+        . . . 3 3 3 3 4 4 4 4 4 4 . . . 
+        . . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+        . . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
+        . 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+        . 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+        . 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
+        . 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+        . . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
+        . . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
+        . . . 4 2 2 2 2 2 2 2 2 4 . . . 
+        . . . . 4 4 2 2 2 2 4 4 . . . . 
+        . . . . . . 4 4 4 4 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.enemyprojectile)
 })
