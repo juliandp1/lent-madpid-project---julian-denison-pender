@@ -70,7 +70,7 @@ scene.onHitTile(SpriteKind.Player, 15, function (sprite) {
     game.over(true, effects.confetti)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
+    mySprite2.destroy(effects.ashes, 500)
 })
 let projectile: Sprite = null
 let mySprite2: Sprite = null
@@ -78,24 +78,7 @@ let projectile2: Sprite = null
 let current_level = 0
 let mySprite: Sprite = null
 let level: Image[] = []
-tiles.setTilemap(tiles.createTilemap(hex`1000100001010101020202020202020202020202010202020202020202020202020202020202020202010101020101010101010201020201010101020201010202020102010202020201010202010102010101020102020202010102020201020101020201010101010101020402010201010202010201010101010202020102010102020102020201010101010101020101020201020202020201020202020202010202010201010101020202020202020102020102010101010101020201010101020201020101010102020202010202020201010202020202020202020102020202010102020202020202010202020201010101030101010101010102020201010101`, img`
-    2 2 2 2 . . . . . . . . . . . . 
-    2 . . . . . . . . . . . . . . . 
-    . . . . . 2 2 2 . 2 2 2 2 2 2 . 
-    2 . . 2 2 2 2 . . 2 2 . . . 2 . 
-    2 . . . . 2 2 . . 2 2 . 2 2 2 . 
-    2 . . . . 2 2 . . . 2 . 2 2 . . 
-    2 2 2 2 2 2 2 . . . 2 . 2 2 . . 
-    2 . 2 2 2 2 2 . . . 2 . 2 2 . . 
-    2 . . . 2 2 2 2 2 2 2 . 2 2 . . 
-    2 . . . . . 2 . . . . . . 2 . . 
-    2 . 2 2 2 2 . . . . . . . 2 . . 
-    2 . 2 2 2 2 2 2 . . 2 2 2 2 . . 
-    2 . 2 2 2 2 . . . . 2 . . . . 2 
-    2 . . . . . . . . . 2 . . . . 2 
-    2 . . . . . . . 2 . . . . 2 2 2 
-    2 . 2 2 2 2 2 2 2 . . . 2 2 2 2 
-    `, [myTiles.transparency16,sprites.builtin.forestTiles0,sprites.castle.tilePath5,sprites.castle.tilePath8,sprites.castle.tilePath2], TileScale.Sixteen))
+tiles.setTilemap(tilemap`level1`)
 scene.setTile(3, img`
     . . . 6 6 6 6 6 6 6 6 6 6 . . . 
     . 6 6 7 7 7 7 7 7 7 7 7 7 6 6 . 
@@ -186,7 +169,7 @@ scene.setTile(15, img`
     7 6 7 7 6 7 6 6 6 7 7 6 7 7 7 7 
     7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
     `, true)
-let messages = ["Press A to fire at the monkey"]
+let messages = ["Find the way out of the maze", "Press A to fire at the monkey"]
 level = [img`
     3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 
     3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -254,3 +237,6 @@ scene.cameraFollowSprite(mySprite)
 info.startCountdown(45)
 current_level = 0
 next_level()
+game.onUpdateInterval(500, function () {
+	
+})
