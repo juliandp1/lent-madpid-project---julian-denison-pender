@@ -29,6 +29,27 @@ scene.onHitTile(SpriteKind.Player, 7, function (sprite) {
 function next_level () {
     scene.setTileMap(level[current_level])
     scene.placeOnRandomTile(mySprite, 5)
+    if (current_level) {
+        mySprite2 = sprites.create(img`
+            . . . . f f f f f . . . . . . . 
+            . . . f e e e e e f . . . . . . 
+            . . f d d d d e e e f . . . . . 
+            . c d f d d f d e e f f . . . . 
+            . c d f d d f d e e d d f . . . 
+            c d e e d d d d e e b d c . . . 
+            c d d d d c d d e e b d c . . . 
+            c c c c c d d e e e f c . . . . 
+            . f d d d d e e e f f . . . . . 
+            . . f f f f f e e e e f . . . . 
+            . . . . f f e e e e e e f . f f 
+            . . . f e e f e e f e e f . e f 
+            . . f e e f e e f e e e f . e f 
+            . f b d f d b f b b f e f f e f 
+            . f d d f d d f d d b e f f f f 
+            . . f f f f f f f f f f f f f . 
+            `, SpriteKind.Enemy)
+        scene.placeOnRandomTile(mySprite2, 15)
+    }
 }
 sprites.onOverlap(SpriteKind.enemyprojectile, SpriteKind.Player, function (sprite, otherSprite) {
     mySprite.destroy(effects.disintegrate, 5000)
@@ -103,40 +124,40 @@ scene.setTile(5, img`
     7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
     `, false)
 scene.setTile(7, img`
-    7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-    6 6 7 6 7 6 7 6 6 d 6 7 7 6 7 7 
-    d d 6 7 7 6 7 d d d 7 6 d 6 7 6 
-    d d d d d d 6 d d d d d d d 6 d 
-    d d d d d d d d d d d d d d d d 
-    d 1 1 d 1 d d d d d 1 d d d d d 
-    d 1 1 d d d d d d d d d d d d d 
-    d d d d d d d d d d d d d d d d 
-    d d d d d d d d d d d d d d d d 
-    d d d d d d b d d d d d d d 1 d 
-    d d d d d d d d d d d d d d d d 
-    d d b d d d d d d d d b b d d d 
-    d d d d d d d d d d d b b d d d 
-    d d d d d d d d d d d d d d d d 
-    d d d d d d d 1 d d d d d d d d 
-    d d d d d d d d d d d d d d 1 d 
+    . b b b b b b b b b b b b b b . 
+    b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+    b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+    b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+    b b b b b b b d d b b b b b b b 
+    . b b b b b b c c b b b b b b . 
+    b c c c c c b c c b c c c c c b 
+    b c c c c c c b b c c c c c c b 
+    b c c c c c c c c c c c c c c b 
+    b c c c c c c c c c c c c c c b 
+    b b b b b b b b b b b b b b b b 
+    b e e e e e e e e e e e e e e b 
+    b e e e e e e e e e e e e e e b 
+    b c e e e e e e e e e e e e c b 
+    b b b b b b b b b b b b b b b b 
+    . b b . . . . . . . . . . b b . 
     `, true)
 scene.setTile(15, img`
-    d d d d d d d d d d d d d d 6 7 
-    b d d d d d d d d d d d d d 6 7 
-    d d d d d 1 d d d d d d d 6 7 7 
-    d d d d d d d d d d d d d d 6 7 
-    d d d d d d d d d b b d d d d 7 
-    d d d d d d d d d b b d d d 6 7 
-    d d d d d d d d d d d d d 6 7 7 
-    d 1 1 d d d d d d d d d d d 6 7 
-    d 1 1 d d d d 1 d d d d d d 6 7 
-    d d d d d d d d d d d d d d 7 7 
-    d d d d d d d d d d d d d 6 7 7 
-    d d b d d d d d d d d 1 d 6 6 7 
-    d d d d d d d d d d d d d 7 6 7 
-    6 7 d 6 d 6 d d 6 6 6 d 6 7 7 7 
-    7 6 7 7 6 7 6 6 6 7 7 6 7 7 7 7 
-    7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+    e 3 3 3 3 3 3 3 3 3 3 3 3 3 3 e 
+    e 4 4 4 4 4 4 4 4 4 4 4 4 4 4 e 
+    e e e e e e e e e e e e e e e e 
+    e 4 e 4 4 4 4 4 4 4 4 4 4 e 4 e 
+    e 4 e e e e e e e e e e e e 4 e 
+    e 4 e 3 3 3 3 3 3 3 3 3 3 e 4 e 
+    e 4 e 4 4 4 4 4 4 4 4 4 4 e 4 e 
+    e 4 e e e e e e e e e e e e 4 e 
+    e 4 e 3 3 3 3 3 3 3 3 3 3 e 4 e 
+    e 4 e 4 4 4 4 4 4 4 4 4 4 e 4 e 
+    e 3 3 3 3 3 3 3 3 3 3 3 3 3 3 e 
+    e 4 4 4 4 4 4 4 4 4 4 4 4 4 4 e 
+    e e e e e e e e e e e e e e e e 
+    e e c c c c c c c c c c c c e e 
+    e e c c c c c c c c c c c c e e 
+    e e e e e e e e e e e e e e e e 
     `, true)
 let messages = ["Find the way out of the maze", "Press A to fire at the monkey"]
 level = [img`
@@ -206,7 +227,7 @@ scene.cameraFollowSprite(mySprite)
 info.startCountdown(45)
 current_level = 0
 next_level()
-game.onUpdateInterval(10000, function () {
+game.onUpdateInterval(9000, function () {
     projectile3 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -243,5 +264,5 @@ game.onUpdateInterval(10000, function () {
         . . . . . . 4 4 4 4 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.enemyprojectile)
-    projectile.follow(mySprite, 10)
+    projectile.follow(mySprite, 15)
 })
