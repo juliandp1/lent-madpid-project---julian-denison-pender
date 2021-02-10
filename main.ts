@@ -52,8 +52,8 @@ function next_level () {
     }
 }
 sprites.onOverlap(SpriteKind.enemyprojectile, SpriteKind.Player, function (sprite, otherSprite) {
-    mySprite.destroy(effects.fire, 1000)
-    game.over(false)
+    mySprite.destroy(effects.disintegrate, 5000)
+    game.over(false, effects.confetti)
 })
 scene.onHitTile(SpriteKind.Player, 15, function (sprite) {
     game.over(true, effects.confetti)
@@ -166,8 +166,8 @@ level = [img`
     2 2 2 2 2 2 3 3 2 3 3 3 3 3 3 2 
     3 2 2 3 3 3 3 2 2 3 3 2 2 2 3 2 
     3 2 2 2 2 3 3 2 2 3 3 2 3 3 3 2 
-    3 2 2 2 2 3 3 2 2 2 3 2 3 3 2 2 
-    3 3 3 3 3 3 3 2 7 2 3 2 3 3 2 2 
+    3 2 2 2 2 3 3 2 2 2 2 2 3 3 2 2 
+    3 3 3 3 3 3 3 2 7 2 2 2 3 3 2 2 
     3 2 3 3 3 3 3 2 2 2 3 2 3 3 2 2 
     3 2 2 2 3 3 3 3 3 3 3 2 3 3 2 2 
     3 2 2 2 2 2 3 2 2 2 2 2 2 3 2 2 
@@ -183,7 +183,7 @@ level = [img`
     3 2 2 3 3 2 2 2 3 3 3 3 3 3 2 3 
     3 2 2 3 3 2 3 3 2 2 2 2 2 3 2 3 
     3 2 2 3 3 2 3 3 2 2 2 2 2 2 2 3 
-    3 2 2 3 2 2 3 3 3 3 3 3 2 2 2 3 
+    3 2 2 3 2 2 3 3 2 2 3 3 2 2 2 3 
     3 2 2 3 2 2 2 2 2 2 2 2 3 3 2 3 
     3 2 2 3 2 2 2 2 2 2 2 2 3 3 2 3 
     3 2 2 3 2 2 2 2 2 2 2 2 3 3 2 3 
@@ -227,7 +227,7 @@ scene.cameraFollowSprite(mySprite)
 info.startCountdown(45)
 current_level = 0
 next_level()
-game.onUpdateInterval(500, function () {
+game.onUpdateInterval(10000, function () {
     projectile3 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -245,7 +245,7 @@ game.onUpdateInterval(500, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, mySprite, 50, 50)
+        `, mySprite2, 50, 50)
     projectile = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . 4 4 4 4 . . . . . . 
@@ -264,4 +264,5 @@ game.onUpdateInterval(500, function () {
         . . . . . . 4 4 4 4 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.enemyprojectile)
+    projectile.follow(mySprite, 10)
 })
